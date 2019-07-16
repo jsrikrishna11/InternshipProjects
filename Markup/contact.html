@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script src="imageSlider.js"></script>
+        <link rel="stylesheet" href="stylesheet.css">
+
+        <title>My homepage</title>
+
+    </head>
+    <body>
+            <nav class="topnav" id="topbar">
+                    <a class="active" href="#home">Home</a>
+                    <a href="#news">News</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#about">About</a>
+                    <input type="text" placeholder="Search..." class="search">
+            </nav>
+        <div class="container" >
+                <form action="HomePage.html" >
+
+                        <label for="fname" class="text-color" >First Name</label>
+                        <input class="contacts"type="text" id="fname" name="firstname" placeholder="Your First name.." required>
+                    
+                        <label for="lname" class="text-color" required>Last Name</label>
+                        <input class="contacts" type="text" id="lname" name="lastname" placeholder="Your Last name.." required>
+                    
+                        <label for="country" class="text-color">Country</label>
+                        <select class="contacts" id="country" name="country" required>
+                          <option value="australia">Australia</option>
+                          <option value="canada">Canada</option>
+                          <option value="usa">USA</option>
+                        </select>
+                    
+                        <label for="subject" class="text-color">Subject</label>
+                        <textarea class="contacts" id="subject" name="subject" placeholder="Write something.." style="height:170px" required></textarea>
+                    
+                        <input type="submit" value="Submit">
+                    
+                      </form>
+        </div> 
+    </body>
+</html>
