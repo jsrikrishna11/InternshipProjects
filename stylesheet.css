@@ -205,5 +205,14 @@
     width: 100%;
     width: 100%;
     height: 100%;
+}
 
+.text-inlay{
+    font: bold 200px arial, sans-serif;
+  background-color: #565656;
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
 }
