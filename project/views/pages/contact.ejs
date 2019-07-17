@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <%include ../partials/head.ejs %>
+        <%include ../partials/captchaScript.ejs %>
+    </head>
+    <body>
+        <% include ../partials/navigation.ejs %>
+        <div class="container" >
+                <form action="/contact" method="POST" >
+
+                        <label for="fname" class="text-color" >First Name</label>
+                        <input class="contacts"type="text" id="fname" name="firstname" placeholder="Your First name.." required>
+                    
+                        <label for="lname" class="text-color" required>Last Name</label>
+                        <input class="contacts" type="text" id="lname" name="lastname" placeholder="Your Last name.." required>
+                    
+                        <label for="country" class="text-color">Email</label>
+                        <input class="contacts" type="email" name="email" placeholder="example: jhondoe@domain.com" required>
+                        <br>
+                        <label for="subject" class="text-color">Subject</label>
+                        <textarea class="contacts" id="subject" name="subject" placeholder="Write something.." style="height:170px" required></textarea>
+                        <%include ../partials/captcha.ejs %>
+                        <input type="submit" value="Submit">
+                    
+                      </form>
+        </div> 
+    </body>
+</html>

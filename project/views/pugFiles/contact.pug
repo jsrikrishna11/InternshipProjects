@@ -1,0 +1,16 @@
+extend  navBar.pug
+block content
+    .container
+	form(action='HomePage.html')
+		label.text-color(for='fname') First Name
+		input#fname.contacts(type='text', name='firstname', placeholder='Your First name..', required='')
+		label.text-color(for='lname', required='') Last Name
+		input#lname.contacts(type='text', name='lastname', placeholder='Your Last name..', required='')
+		label.text-color(for='country') Country
+		select#country.contacts(name='country', required='')
+			option(value='australia') Australia
+			option(value='canada') Canada
+			option(value='usa') USA
+		label.text-color(for='subject') Subject
+		textarea#subject.contacts(name='subject', placeholder='Write something..', style='height:170px', required='')
+		input(type='submit', value='Submit')

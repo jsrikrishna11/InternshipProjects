@@ -1,0 +1,41 @@
+extends navBar.pug
+block content
+  div(style='padding-left:16px')
+      h2 Top Navigation Example
+      p Some content..
+  // Slideshow container
+  .slideshow-container
+    // Full-width images with number and caption text
+    .mySlides.fade
+      .container
+        img.img-prop(src='Images/img1.jpg')
+        label.centered-text.scroll.scroll-text Hello!
+        .text Caption Text
+    .mySlides.fade
+      .container
+        img.img-prop(src='Images/img2.jpg')
+        label.centered-text(style='color: darkblue; size: 25%;') Hello Kitty!
+        .text Caption Two
+    .mySlides.fade
+      .container
+        img.img-prop(src='Images/img3.jpg')
+        .text Caption Three
+    // Next and previous buttons
+    a.prev(onclick='plusSlides(-1)') ❮
+    a.next(onclick='plusSlides(1)') ❯
+    br
+    // The dots/circles
+    div(style='text-align:center')
+      span.dot(onclick='currentSlide(1)')
+      span.dot(onclick='currentSlide(2)')
+      span.dot(onclick='currentSlide(3)')
+  .row(style='column-count: 3')
+    .column.container
+      img.img-prop(src='Images/belief.jpg')
+      .centered-text BELIEF
+    .column.container
+      iframe.video-dimension(src='https://www.youtube.com/embed/75RwBP7F0Zw')
+    .column.container
+      img.img-prop(src='Images/klopp.jpg')
+      .centered-text KLOPP
+
