@@ -6,9 +6,14 @@
     padding-inline-start: 5px;
 }
 
+
 #drop:hover{
-  color: violet;
-  text-decoration: underline;
+  color: red;
+  text-decoration: underline, double;
+}
+
+#centreAlign{
+  align-items: center;
 }
 .dropdown:hover .dropdown-menu {
     display: block;
@@ -47,3 +52,7 @@
       line-height: 27px;
     }
   }
+
+.items-bgd{
+  background-color: gold;
+}

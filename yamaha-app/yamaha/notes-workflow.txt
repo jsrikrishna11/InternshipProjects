@@ -1,6 +1,4 @@
 things to do for login/signup
-    1. mongodb usage
-    2. starting up mongodb server
     3. connecting to mongodb server
     4. sending requests to mongo server
     5. capturing mongo server response 
