@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var request = require('request');
 var nodemailer = require('nodemailer');
- 
+var mongoose = require('mongoose')
+
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));

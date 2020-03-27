@@ -6,15 +6,19 @@
     padding-inline-start: 5px;
 }
 
+#drop:hover{
+  color: violet;
+  text-decoration: underline;
+}
 .dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
     align-self: auto;
  }
- a:hover {
+ /* a:hover {
     color: blueviolet;
     text-decoration-line:underline ;
-  }
+  } */
 /* .dropdown-toggle{
     display: inline;
     padding-right: 50%;
