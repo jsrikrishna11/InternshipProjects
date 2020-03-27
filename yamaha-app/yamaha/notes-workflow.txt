@@ -2,3 +2,10 @@ things to do for login/signup
     3. connecting to mongodb server
     4. sending requests to mongo server
     5. capturing mongo server response 
+
+data manipulation work:
+    1. Create some fake data
+    2. show it in tabular form 
+    3. dynamic querying
+    4. update, delete and insert data into the collection 
+    n. Create AWS account - trail account 

@@ -1,15 +1,8 @@
 @import url('http://getbootstrap.com/dist/css/bootstrap.css');
-
 .navbar-brand{
     padding: 0%;
     padding-left: 5px;
     padding-inline-start: 5px;
-}
-
-
-#drop:hover{
-  color: red;
-  text-decoration: underline, double;
 }
 
 #centreAlign{
@@ -20,20 +13,13 @@
     margin-top: 0;
     align-self: auto;
  }
- /* a:hover {
-    color: blueviolet;
-    text-decoration-line:underline ;
-  } */
-/* .dropdown-toggle{
-    display: inline;
-    padding-right: 50%;
-} */
+
 .navbar {
     min-height: 80px;
   }
   
   .navbar-brand {
-    padding: 0 15px;
+    padding: 0px;
     height: 80px;
     line-height: 80px;
   }
@@ -55,4 +41,69 @@
 
 .items-bgd{
   background-color: gold;
+  height: 20px3;
 }
+.navbar-inner {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dropdown-toggle{
+  color: black;
+}
+.dropdown-toggle:hover{
+  color: red;
+  text-decoration: underline, double;
+}
+
+.nav-content{
+  color: skyblue;
+  font-size: medium;
+}
+
+.navbar-bgd{
+  background-color: red;
+}
+
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* image slider */
+.carousel, .item, .active {
+  height:100%;
+  }
+  .carousel-inner {
+  height:100%;
+  }
+  .carousel {
+  margin-bottom: 60px;
+  }
+  .carousel-caption {
+  z-index: 10;
+  }
+  .carousel .item {
+  background-color: #777;
+  }
+  .carousel .carousel-inner .bg {
+  background-repeat:no-repeat;
+  background-size:cover;
+  }
+  .carousel .carousel-inner .bg1 {
+  background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/158072/spiderweb.jpg');
+  background-position: center top;
+  }
+  .carousel .carousel-inner .bg2 {
+  background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/158072/hearthand.jpg');
+  background-position: center center;
+  }
+  .carousel .carousel-inner .bg3 {
+  background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/158072/woman-camera.jpg');
+  background-position: center bottom;
+  }
