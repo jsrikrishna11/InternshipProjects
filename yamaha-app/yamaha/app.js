@@ -15,4 +15,7 @@ app.get('/', function(req, res){
     res.render('pages/index');
 });
 
+app.get('/profile', function(req, res){
+    res.render('pages/profile')
+})
 app.listen(8080, ()=>console.log("listening"));
