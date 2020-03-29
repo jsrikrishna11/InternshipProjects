@@ -1,8 +1,6 @@
 @import url('http://getbootstrap.com/dist/css/bootstrap.css');
 .navbar-brand{
     padding: 0%;
-    padding-left: 5px;
-    padding-inline-start: 5px;
 }
 
 #centreAlign{
@@ -106,4 +104,8 @@
   .carousel .carousel-inner .bg3 {
   background-image:url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/158072/woman-camera.jpg');
   background-position: center bottom;
+  }
+
+  #navbrand{
+    padding: 0%;
   }
