@@ -24,6 +24,9 @@ app.get('/', function(req, res){
     res.render('pages/index');
 });
 
+app.get('/save', function(req, res){
+    res.send("Saved!")
+})
 app.get('/profile', function(req, res){
     res.render('pages/profile')
 })
@@ -58,11 +61,23 @@ app.get('/db', function(req, res){
     });
 });
 app.get('/existing', function(req, res){
-    var dbo = db.useDb(DATABASE);
-    dbo.collection(mycollection).find().limit(10).toArray(function(err, result){
-        if(err) throw err;
-        res.render('pages/dealers', { jsonData : result});
+    connection(config, function (err) {
+        if (err) console.log(err);
+        // create Request object
+        let statement="select policyID from insurance where county = \'UNION COUNTY\';"
+        var request = new sql.Request();   
+        request.query(statement, function (err, recordset) {
+            if (err) console.log(err)
+            console.log("Query!")
+            let result = []
+            for(i in recordset["recordsets"][0]){
+                console.log(i)
+                console.log(recordset["recordsets"][0][i])
+            }
+        // send records as a response
+            res.render('pages/dealers',{'selected':['policyID'],'data':recordset["recordsets"][0]});
     });
+    })
 })
 
 app.get("/askme", function(req, res){
@@ -73,24 +88,26 @@ app.post('/query', function(req, res){
     console.log(req.body);
     const column = req.body['field'];
     let value = req.body['criteria'];
+    let selection = req.body['selection']
+    console.log(selection)
     console.log(column)
     connection(config, function (err) {
 
         if (err) console.log(err);
         // create Request object
         let statement="";
-        let selector = "";
         var request = new sql.Request();
         if(column=='county'|| column=='statecode' || column == "line"){
             value = "\'"+value+"\'" 
         }
-        statement = 'select * from insurance where '+column+"="+value;    
+        statement = 'select '+selection.join(',')+' from insurance where '+column+"="+value;    
         // query to the database and get the records
         request.query(statement, function (err, recordset) {
-            if (err) console.log(err)
+            if (err) res.send("NO SUCH RECORD FOUND!")
         // send records as a response
-            res.render(recordset["recordsets"]);
+            res.render("pages/queryResult",{"selected": selection,"records":recordset["recordsets"][0]});
     });
 });
+
 })
 app.listen(8080, ()=>console.log("listening"));

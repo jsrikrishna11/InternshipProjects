@@ -5,28 +5,25 @@
 <body>
 
     <% include ../partials/constant.ejs %>
-    <table class="table table-inverse">
+    <table class="table table-inverse" style="padding: 40px;">
         <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Username</th>
-  
-          </tr>
+          <% for(var i=0; i< selected.length; i++){ %>
+                <th><%=selected[i]%></th>
+          <%}%>
+        
         </thead>
-  
-        <tbody>
-          <% for(var i=0; i < studentlist.length; i++) { %>
+
+         <tbody>
+          <% for(var i=0; i < records.length; i++) { %>
          <tr>
-  
-           <td><%= studentlist[i].name %></td>
-           <td><%= studentlist[i].email %></td>
-           <td><%= studentlist[i].username %></td>
-  
-  
-         </tr>
+           <%for (var j=0; j< selected.length; j++){ %>
+            <td> <%= records[i][selected[j]] %></td>
+           <%}%>
+        
+        </tr>
+         
       <% } %>
-        </tbody>
+        </tbody> 
   
       </table>
 </body>

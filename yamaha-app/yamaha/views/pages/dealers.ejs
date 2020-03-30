@@ -9,24 +9,17 @@
     <table class="table table-inverse">
         <thead>
           <tr>
-            <th>Serial No.</th>
-            <th>StateCode</th>
-            <th>County</th>
-            <th>Line</th>
-  
+          <% for(i=0; i < selected.length;i++){%>  
+            <th><%=selected[i]%></th>
+            <%}%>
           </tr>
         </thead>
   
         <tbody>
-          <% for(var i=0; i < jsonData.length; i++) { %>
-         <tr>
+          <% for(var i=0; i < data.length ; i++) { %> -->
+         <tr> 
   
-           <td><%= i+1 %></td>
-           <td><%= jsonData[i].statecode %></td>
-           <td><%= jsonData[i].county %></td>
-           <td><%= jsonData[i].line %></td>
-  
-  
+          <td><%= data[i]['policyID'] %></td>
          </tr>
       <% } %>
         </tbody>
