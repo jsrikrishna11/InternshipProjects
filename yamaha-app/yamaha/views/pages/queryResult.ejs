@@ -1,0 +1,33 @@
+<html>
+<head>
+    <%include ../partials/head.ejs %>
+</head>
+<body>
+
+    <% include ../partials/constant.ejs %>
+    <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Username</th>
+  
+          </tr>
+        </thead>
+  
+        <tbody>
+          <% for(var i=0; i < studentlist.length; i++) { %>
+         <tr>
+  
+           <td><%= studentlist[i].name %></td>
+           <td><%= studentlist[i].email %></td>
+           <td><%= studentlist[i].username %></td>
+  
+  
+         </tr>
+      <% } %>
+        </tbody>
+  
+      </table>
+</body>
+</html>

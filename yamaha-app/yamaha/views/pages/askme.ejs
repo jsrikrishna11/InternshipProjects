@@ -1,0 +1,25 @@
+<html>
+<head>
+    <%include ../partials/head.ejs %>
+</head>
+<body>
+
+    <% include ../partials/constant.ejs %>
+
+<form action="/query" method="post" accept-charset="utf-8" class="form" role="form">   
+    <legend>Query Engine</legend> 
+    <select id="selection" name="field" onchange="dynamicTB()" >
+        <option value="policyID">Policy ID</option>
+        <option value="statecode">State Code</option>
+        <option value="county">County</option>
+        <option value="line">Line</option>
+    </select>     
+    <div class="row">   
+        <div class="col-xs-6 col-md-6">
+            <input id="dynamictext" type="text" name="criteria" class="form-control input-lg"   />                        
+        </div>
+    </div>
+    <button class="btn btn-lg" type="submit"  >Post</button>
+</form>          
+</body>
+</html>

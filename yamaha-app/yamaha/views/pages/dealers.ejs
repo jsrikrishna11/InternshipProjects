@@ -1,0 +1,39 @@
+<html>
+<head>
+    <%include ../partials/head.ejs %>
+</head>
+<body>
+
+    <% include ../partials/constant.ejs %>
+
+    <table class="table table-inverse">
+        <thead>
+          <tr>
+            <th>Serial No.</th>
+            <th>StateCode</th>
+            <th>County</th>
+            <th>Line</th>
+  
+          </tr>
+        </thead>
+  
+        <tbody>
+          <% for(var i=0; i < jsonData.length; i++) { %>
+         <tr>
+  
+           <td><%= i+1 %></td>
+           <td><%= jsonData[i].statecode %></td>
+           <td><%= jsonData[i].county %></td>
+           <td><%= jsonData[i].line %></td>
+  
+  
+         </tr>
+      <% } %>
+        </tbody>
+  
+      </table>
+    <div>
+        <h2> Insert Info</h2>
+    </div>
+</body>
+</html>

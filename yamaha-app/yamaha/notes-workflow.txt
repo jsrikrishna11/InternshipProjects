@@ -4,8 +4,7 @@ things to do for login/signup
     5. capturing mongo server response 
 
 data manipulation work:
-    1. Create some fake data
-    2. show it in tabular form 
+    1. change data base manager to sql!
     3. dynamic querying
     4. update, delete and insert data into the collection 
     n. Create AWS account - trail account 
