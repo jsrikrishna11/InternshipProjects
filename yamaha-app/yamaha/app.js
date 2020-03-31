@@ -3,7 +3,12 @@ var app = express();
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var sql = require("mssql");
-
+var rn = require('random-number');
+var options = {
+    min:  0
+  , max:  1000
+  , integer: true
+  }
 //SQL server config
 var config = {
     user: 'sa',
@@ -38,7 +43,33 @@ app.get('/register', function(req, res){
 
 app.post('/save', function(req, res){
     console.log(req.body)
-    res.send("Thank you!")
+    connection(config, function(err){
+        if(err) console.log(err)
+        var request = new sql.Request();
+        var eID = rn(options);
+        var columns = [];
+        var values = []
+        columns.push('employeeID')
+        values.push(eID)
+        for (key in req.body){
+            var value;
+            if(key=="eName" || key =="role"){
+              value = "\'"+req.body[key]+"\'"  
+            }
+            else{
+                value = parseInt(req.body[key])
+            }
+            columns.push(key)
+            values.push(value)
+        }
+        console.log(columns+"   "+values)
+        var statement = 'insert into Test.dbo.employee ('+ columns+') values('+values+');'
+        // var statement = "insert into Test.dbo.emp (employeeID, eName, age, salary) VALUES (122, \'Krishna\', 12, 1000)"
+        request.query(statement, function(err, records){
+            if(err) res.send(err)
+            res.send("Thanks!")
+        })
+    })
 })
 
 app.get("/askme", function(req, res){
