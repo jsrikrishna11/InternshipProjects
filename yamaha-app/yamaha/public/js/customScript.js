@@ -14,3 +14,8 @@ function enableSal(){
     var text = document.getElementById("sal");
     text.disabled = false
 }
+
+function activateSubmit(){
+    var submit = document.getElementById('submit');
+    submit.disabled = false;
+}

@@ -19,7 +19,7 @@ var config = {
 };
 var connection = sql.connect
 
-//Server setting
+//Server settings
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
@@ -41,6 +41,11 @@ app.get('/register', function(req, res){
     res.render('pages/dealerRequest')
 })
 
+
+
+
+
+//Insert Operation
 app.post('/save', function(req, res){
     console.log(req.body)
     connection(config, function(err){
@@ -76,21 +81,7 @@ app.get("/askme", function(req, res){
     res.render('pages/askme');
 });
 
-
-//DB access
-app.get('/db', function(req, res){
-    connection(config, function (err) {
-        if (err) console.log(err);
-        var request = new sql.Request();
-        request.query('select * from insurance', function (err, recordset) {
-            
-            if (err) console.log(err)
-            res.send(recordset);
-            
-        });
-    });
-});
-
+//Read Operation
 app.get('/existing', function(req, res){
     connection(config, function (err) {
         if (err) console.log(err);
@@ -108,7 +99,7 @@ app.get('/existing', function(req, res){
     });
     })
 })
-
+//Dynamic Read operation
 app.post('/query', function(req, res){
     console.log(req.body);
     const column = req.body['field'];
@@ -129,6 +120,38 @@ app.post('/query', function(req, res){
             res.render("pages/queryResult",{"selected": selection,"records":recordset["recordsets"][0]});
     });
 });
+})
+
+
+
+//Update Operation
+    //Getting details of desired candidate.
+app.get('/edit', function(req, res){
+    res.render('pages/enterEID');
+})
+    //Displaying details and allowing user to edit attributes
+app.post('/details', function(req,res){
+    var statement = "select * from Test.dbo.employee where employeeID = "+parseInt(req.body['employeeID'])+";";
+    console.log(statement)
+    connection(config, function(err){
+        if (err) res.send(err)
+        var request = new sql.Request();
+        request.query(statement, function(err, recordset){
+            if(err) res.send(err)
+            if(recordset['recordsets']){
+                var keys = Object.keys(recordset['recordsets'][0][0]);
+                console.log(recordset['recordsets'][0][0])
+                console.log(keys)
+                res.render('pages/update', {'keys': keys, 'data':recordset['recordsets'][0]})
+            }
+        })
+    })
+});
+
+    //Acknowledgement message and final result.
+app.post('/change', function(req, res){
+    console.log(req.body);
+    res.send("Thanks!")
 })
 
 

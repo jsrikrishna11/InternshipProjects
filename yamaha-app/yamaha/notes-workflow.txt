@@ -1,12 +1,7 @@
-things to do for login/signup
-    3. connecting to mongodb server
-    4. sending requests to mongo server
-    5. capturing mongo server response 
-
 data manipulation work:
-    4. update, delete and insert data into the collection 
+    4. update and delete  data into the collection 
     n. Create AWS account - trail account 
 
-insert operation:
-    1. similar webpage as was shown in dynamicQuery page
-    2. but, add a textbox next to the checkbox
+optimization:
+    1. clean up the way you deal with query results. 
+    2. Find a better way to put recordset into tables.
