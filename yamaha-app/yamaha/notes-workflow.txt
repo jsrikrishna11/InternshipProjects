@@ -5,3 +5,10 @@ data manipulation work:
 optimization:
     1. clean up the way you deal with query results. 
     2. Find a better way to put recordset into tables.
+
+New workflow:
+    1. Page with serach box which asks for name and 
+    fetches the results and displayed in table format.
+    2. Results will be clickable such that he can 
+    specifically enter the record and look at all the details.
+	
