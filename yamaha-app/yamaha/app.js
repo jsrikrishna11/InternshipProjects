@@ -139,7 +139,7 @@ app.post('/details', function(req,res){
             req.body[i] = parseInt(req.body[i]);
         }
     }
-    var statement = "select * from Test.dbo.employee where eName like "+ req.body['eName'];
+    var statement = "select employeeID, eName from Test.dbo.employee where eName like "+ req.body['eName'];
     console.log(statement)
     connection(config, function(err){
         if (err) res.send(err)
