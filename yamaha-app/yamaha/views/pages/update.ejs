@@ -8,26 +8,26 @@
     <div>
         <br>
     </div>
-    <form action="/change" method="post">
-    <table class="table table-inverse">
+    <table class="table table-inverse" style="padding: 40px;">
         <thead>
-            <input type="text" value="<%=data[0]['employeeID']%>"  >
-            <th>
-                <label>Details of Employee ID: <%=data[0]['employeeID']%></label>
-            </th>
+          <% for(var i=0; i< keys.length; i++){ %>
+                <th><%=keys[i]%></th>
+          <%}%>
+        
         </thead>
-        <tbody>
-            <% for(var i = 1; i< keys.length ; i++){%>
-            <tr>
-                <td>
-                    <label><%=keys[i]%>:</keys></label>
-                    <input type="text" value="<%=data[0][keys[i]]%>" name="<%=keys[i]%>" onchange="activateSubmit()">
-                </td>
-            </tr>
-            <%}%>
-        </tbody>
-    </table>
-    <input type="submit" id="submit" disabled="true">
-    </form>
+
+         <tbody>
+          <% for(var i=0; i < data.length; i++) { %>
+         <tr>
+           <%for (var j=0; j< keys.length; j++){ %>
+            <td> <%= data[i][keys[j]] %></td>
+           <%}%>
+        
+        </tr>
+         
+      <% } %>
+        </tbody> 
+  
+      </table>
 </body>
 </html>

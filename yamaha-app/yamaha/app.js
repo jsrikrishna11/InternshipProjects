@@ -131,7 +131,15 @@ app.get('/edit', function(req, res){
 })
     //Displaying details and allowing user to edit attributes
 app.post('/details', function(req,res){
-    var statement = "select * from Test.dbo.employee where employeeID = "+parseInt(req.body['employeeID'])+";";
+    for(i in req.body){
+        if(i == 'eName'){
+            req.body[i] = "\'%"+req.body[i]+"%\'";
+        }
+        if( i== 'employeeID'){
+            req.body[i] = parseInt(req.body[i]);
+        }
+    }
+    var statement = "select * from Test.dbo.employee where eName like "+ req.body['eName'];
     console.log(statement)
     connection(config, function(err){
         if (err) res.send(err)
@@ -140,8 +148,6 @@ app.post('/details', function(req,res){
             if(err) res.send(err)
             if(recordset['recordsets']){
                 var keys = Object.keys(recordset['recordsets'][0][0]);
-                console.log(recordset['recordsets'][0][0])
-                console.log(keys)
                 res.render('pages/update', {'keys': keys, 'data':recordset['recordsets'][0]})
             }
         })
