@@ -15,7 +15,7 @@ var config = {
     password: '1234',
     server: 'localhost', 
     database: 'Test' ,
-    port: 1433,
+    port: 1433
 };
 var connection = sql.connect
 
@@ -127,7 +127,7 @@ app.post('/query', function(req, res){
 //Update Operation
     //Getting details of desired candidate.
 app.get('/edit', function(req, res){
-    res.render('pages/enterEID');
+    res.render('pages/entername');
 })
     //Displaying details and allowing user to edit attributes
 app.post('/details', function(req,res){
