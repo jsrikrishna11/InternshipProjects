@@ -7,8 +7,14 @@ optimization:
     2. Find a better way to put recordset into tables.
 
 New workflow:
-    1. Page with serach box which asks for name and 
-    fetches the results and displayed in table format.
-    2. Results will be clickable such that he can 
-    specifically enter the record and look at all the details.
+    1. Expander on name tag itself in the edit details - expand and collapse jquery
+    2. Employee page load -> list of all emps with jquery expandable panel -> show only 5
+    employees and add pagination
+        Search bar - as you search refresh the page
+    functions:
+        1. Search suggestions
+        2. pagination
+        3. expand-collapse (collapsable)
+        4. page filtering
+
 	
