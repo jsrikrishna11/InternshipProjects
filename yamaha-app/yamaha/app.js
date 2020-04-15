@@ -45,6 +45,8 @@ app.get('/register', function(req, res){
 
 
 
+
+
 //Insert Operation
 app.post('/save', function(req, res){
     console.log(req.body)
@@ -141,6 +143,7 @@ app.post('/details', function(req,res){
     }
     var statement = "select employeeID, eName from Test.dbo.employee where eName like "+ req.body['eName'];
     console.log(statement)
+    // getRecords(statement, res, "pages/update");
     connection(config, function(err){
         if (err) res.send(err)
         var request = new sql.Request();
@@ -157,9 +160,25 @@ app.post('/details', function(req,res){
     //Acknowledgement message and final result.
 app.post('/change', function(req, res){
     console.log(req.body);
-    var id = parseInt( req.body['employeeID'] );
+    var id = req.body['employeeID'];
+    var statement = "select pay_year, salary from dbo.salaries where employeeID = "+ parseInt(id)+";";
+    var page = "pages/output"
+    getRecords(statement, res, page);
     
-})
+});
 
+function getRecords(statement, res, page){
+    connection(config, function(err){
+        if (err) res.send(err)
+        var request = new sql.Request();
+        request.query(statement, function(err, recordset){
+            if(err) res.send(err)
+            if(recordset['recordsets']){
+                var keys = Object.keys(recordset['recordsets'][0][0]);
+                res.render(page, {'data':recordset['recordsets'][0] , 'keys':keys})
+            }
+        })
+    })
+}
 
 app.listen(8080, ()=>console.log("listening"));
