@@ -157,7 +157,8 @@ app.post('/details', function(req,res){
     //Acknowledgement message and final result.
 app.post('/change', function(req, res){
     console.log(req.body);
-    res.send("Thanks!")
+    var id = parseInt( req.body['employeeID'] );
+    
 })
 
 
