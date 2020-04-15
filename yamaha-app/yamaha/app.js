@@ -143,18 +143,8 @@ app.post('/details', function(req,res){
     }
     var statement = "select employeeID, eName from Test.dbo.employee where eName like "+ req.body['eName'];
     console.log(statement)
-    // getRecords(statement, res, "pages/update");
-    connection(config, function(err){
-        if (err) res.send(err)
-        var request = new sql.Request();
-        request.query(statement, function(err, recordset){
-            if(err) res.send(err)
-            if(recordset['recordsets']){
-                var keys = Object.keys(recordset['recordsets'][0][0]);
-                res.render('pages/update', {'keys': keys, 'data':recordset['recordsets'][0]})
-            }
-        })
-    })
+    getRecords(statement, res, "pages/update");
+    
 });
 
     //Acknowledgement message and final result.
