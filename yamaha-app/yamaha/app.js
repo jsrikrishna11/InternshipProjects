@@ -279,28 +279,20 @@ app.get('/search', function(req, res){
 app.get('/salary', function(req, res){
     var value = req.query['eName'];
     console.log(value);
-    Emp.findOne(
-        {
-            attributes:['employeeID'],
-            where:{
-                eName:  { [Op.eq]: value}        
-            },
-            raw:true
-        }
-    ).then(function(result){
-        var id = result.employeeID;
-        Sal.findAll(
-            {
-                attributes: ['salary', 'pay_year'],
-                where:{
-                    employeeID: { [Op.eq]: id }
-                },
-                raw:true
-            }
-        ).then(function(result){
-            res.send(result);
-
+    Emp.findAll({
+        raw: true,
+        where: {
+            eName: { [Op.eq] : value}
+        },
+        include: Sal
+    }).then(function(result){
+        var send = [];
+        result.forEach(element=>{
+            var pay_year = element['salaries.pay_year']
+            var salary = element['salaries.salary']
+            send.push({year: pay_year, sal: salary})
         })
+        res.send(JSON.stringify(send));
     })
 })
 app.listen(8080, ()=>console.log("listening"));
