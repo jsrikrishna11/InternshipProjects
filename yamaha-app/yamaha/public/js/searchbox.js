@@ -8,7 +8,7 @@ box.addEventListener('keyup', function(event){
     var letters = /^[A-Za-z]+$/;
     if( query.match(letters) ) {
         query = event.target.value;
-        $.get("/search?query="+query, function(data){
+        $.get("/search?eName="+query, function(data){
             console.log(data);
         })
     }

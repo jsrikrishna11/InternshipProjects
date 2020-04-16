@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var sql = require("mssql");
 var rn = require('random-number');
+const {Sequelize, DataTypes, Op} = require('sequelize');
+
 var options = {
     min:  0
   , max:  1000
@@ -18,6 +20,72 @@ var config = {
     port: 1433
 };
 var connection = sql.connect
+
+//ORM Model Creation
+const sequelize = new Sequelize('Test', 'sa', '1234',{
+    host: 'localhost',
+    dialect: 'mssql'
+})
+try{
+    sequelize.authenticate();
+    console.log("Connection to db established!");
+}catch(err){
+    console.err('Could not connect ');
+}
+
+//  Defining model
+//     Employee model defintion
+var Emp = sequelize.define("employee", {
+    employeeID:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true
+    },
+    eName:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+    role:{
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    age:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    salary:{
+        type: DataTypes.INTEGER
+    }
+    },
+    {
+        timestamps: false,
+        freezeTableName: true
+       });
+Emp.sync();
+
+    // Salaries model definition
+var Sal = sequelize.define("salaries", {
+        employeeID:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true
+        },
+        pay_year:{
+            type: DataTypes.SMALLINT,
+            allowNull:false,
+            primaryKey: true
+        },
+        salary:{
+            type: DataTypes.INTEGER(),
+            allowNull:false
+        }
+       },
+       {
+        freezeTableName: true,
+        timestamps: false
+    });
+Sal.sync();       
+
 
 //Server settings
 app.set('view engine', 'ejs');
@@ -177,7 +245,28 @@ app.get('/find', function(req, res){
 });
 
 app.get('/search', function(req, res){
-    res.end("Create model")
+    var key = Object.keys(req.query);
+    var value = req.query[key];
+    console.log(value);
+    var suggestions = [];
+    Emp.findAll({
+        attributes: ['eName'],
+        where: {
+            eName: { [Op.substring]: value}
+        },
+        limit:5,
+        raw:true
+    }
+    
+    ).then(function(result){
+        
+        result.forEach(employee => {
+            suggestions.push(employee['eName'])
+        });
+        res.status(200).end(JSON.stringify({'suggestions': suggestions}));
+        return
+    });
+    
 });
 
 app.listen(8080, ()=>console.log("listening"));
