@@ -1,0 +1,40 @@
+<html>
+<head>
+    <%include ../partials/head.ejs %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          $(".expandableCollapsibleDiv > h3").click(function (e) {
+            var showElementDescription = 
+              $(this).parents(".expandableCollapsibleDiv").find("ul");
+        
+            if ($(showElementDescription).is(":visible")) {
+              showElementDescription.hide("slow", "swing");
+            } else {
+              showElementDescription.show("slow", "swing");
+              
+            }
+          });
+        });
+      </script>
+</head>
+<body>
+
+    <% include ../partials/constant.ejs %>
+    <div>
+        <br>
+    </div>
+    <% data = JSON.parse(data)%>
+    <%for( i = 0; i < data.length; i++){%>
+        <div class="mainDiv">
+            <div class="expandableCollapsibleDiv">
+                <h3><a>Year: <%=data[i]["year"]%></a></h3>
+                <ul>
+                    <li><a>Salary: <%=data[i]["sal"]%></a></li>
+                </ul>
+            </div>
+        </div>
+
+    <%}%>
+
+</body>
+</html>

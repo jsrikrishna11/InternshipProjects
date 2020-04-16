@@ -292,7 +292,7 @@ app.get('/salary', function(req, res){
             var salary = element['salaries.salary']
             send.push({year: pay_year, sal: salary})
         })
-        res.send(JSON.stringify(send));
+        res.render('pages/collapsable',{ 'data': JSON.stringify(send)})
     })
 })
 app.listen(8080, ()=>console.log("listening"));
