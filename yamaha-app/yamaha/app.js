@@ -68,7 +68,8 @@ var Sal = sequelize.define("salaries", {
         employeeID:{
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            foreignKey: true
         },
         pay_year:{
             type: DataTypes.SMALLINT,
@@ -84,7 +85,12 @@ var Sal = sequelize.define("salaries", {
         freezeTableName: true,
         timestamps: false
     });
-Sal.sync();       
+Sal.sync();
+
+    //mentions Associations
+Emp.hasMany(Sal, {
+    foreignKey: 'employeeID'
+}); 
 
 
 //Server settings
@@ -269,4 +275,32 @@ app.get('/search', function(req, res){
     
 });
 
+
+app.get('/salary', function(req, res){
+    var value = req.query['eName'];
+    console.log(value);
+    Emp.findOne(
+        {
+            attributes:['employeeID'],
+            where:{
+                eName:  { [Op.eq]: value}        
+            },
+            raw:true
+        }
+    ).then(function(result){
+        var id = result.employeeID;
+        Sal.findAll(
+            {
+                attributes: ['salary', 'pay_year'],
+                where:{
+                    employeeID: { [Op.eq]: id }
+                },
+                raw:true
+            }
+        ).then(function(result){
+            res.send(result);
+
+        })
+    })
+})
 app.listen(8080, ()=>console.log("listening"));
