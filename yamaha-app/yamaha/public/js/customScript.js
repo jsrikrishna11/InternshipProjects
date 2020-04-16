@@ -19,3 +19,6 @@ function activateSubmit(){
     var submit = document.getElementById('submit');
     submit.disabled = false;
 }
+
+
+

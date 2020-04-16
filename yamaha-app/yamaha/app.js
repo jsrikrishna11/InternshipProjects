@@ -171,4 +171,13 @@ function getRecords(statement, res, page){
     })
 }
 
+// Search box typeahead functionality
+app.get('/find', function(req, res){
+    res.render('pages/search');
+});
+
+app.get('/search', function(req, res){
+    res.end("Create model")
+});
+
 app.listen(8080, ()=>console.log("listening"));

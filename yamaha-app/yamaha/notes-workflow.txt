@@ -17,4 +17,15 @@ New workflow:
         3. expand-collapse (collapsable)
         4. page filtering
 
-	
+	Questions:
+    1. How do I handle search responses in jquery? 
+        When do I start sending requests to the server? - https://codeforgeek.com/ajax-search-box-using-node-mysql/ | 
+            https://github.com/codeforgeek/ajax-search-box
+
+    2. How does Pagination work? 
+        Use ORM (Sequelize) - connect to DB(https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database)
+        creating a model - https://sequelize.org/master/manual/model-basics.html#providing-the-table-name-directly
+        Querying - https://sequelize.org/master/manual/model-querying-basics.html
+        Limits and Pagination - https://sequelize.org/master/manual/model-querying-basics.html#limits-and-pagination
+
+    3. How does expand-collapse work? - http://jsfiddle.net/fr3zv1ob/
