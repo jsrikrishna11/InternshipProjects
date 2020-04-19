@@ -29,3 +29,19 @@ New workflow:
         Limits and Pagination - https://sequelize.org/master/manual/model-querying-basics.html#limits-and-pagination
 
     3. How does expand-collapse work? - http://jsfiddle.net/fr3zv1ob/
+
+
+
+Technical implementation plan of how I want to implement the functionality. 10 bullet points of how you want to implement, what technology,
+flow chart laga and components involved, ee document chadivithey a developer should be able to implement. 
+You need to cut open the body and think how you'll execute.
+    2. How does the API work? - 
+        1. What should be the request?  - https://developers.google.com/places/web-service/search#PlaceSearchRequests
+        2. How is the response displayed? - https://developers.google.com/maps/documentation/javascript/markers
+        3. getting geolocation - https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation
+    1. APIs available and how to utilise them? - 
+    3. Can we use FireBase to send SMS?
+    4. integrate it to Node.js server such that it can do the needfull? - https://github.com/googlemaps/google-maps-services-js
+    5. Custom map? - https://developers.google.com/maps/documentation/javascript/styling
+    Final product - https://developers.google.com/maps/documentation/javascript/markers#complex_icons
+    Embed map - https://developers.google.com/maps/documentation/javascript/markers#complex_icons
